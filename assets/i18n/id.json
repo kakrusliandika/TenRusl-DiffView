@@ -1,0 +1,29 @@
+{
+    "diff.inputs": "Input Diff",
+    "diff.preview": "Pratinjau",
+
+    "diff.openA": "Buka A",
+    "diff.openB": "Buka B",
+    "diff.pasteA": "Tempel A",
+    "diff.pasteB": "Tempel B",
+    "diff.swap": "Tukar",
+    "diff.prev": "Sebelumnya",
+    "diff.next": "Berikutnya",
+    "diff.reset": "Reset",
+
+    "diff.placeholderA": "Tempel atau jatuhkan KIRI (A) di sini…",
+    "diff.placeholderB": "Tempel atau jatuhkan KANAN (B) di sini…",
+
+    "diff.wrap": "Bungkus baris",
+    "diff.lineNumbers": "Nomor baris",
+    "diff.ignoreWhitespace": "Abaikan spasi",
+    "diff.ignoreCase": "Abaikan kapital",
+    "diff.normalizeEOL": "Normalisasi EOL",
+    "diff.ignoreTrailing": "Abaikan spasi akhir",
+    "diff.highContrast": "Kontras tinggi",
+    "diff.watermark": "Tanda air",
+
+    "PNG": "PNG",
+    "PDF": "PDF",
+    "Print": "Cetak"
+}

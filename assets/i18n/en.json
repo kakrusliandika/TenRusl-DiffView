@@ -1,0 +1,29 @@
+{
+    "diff.inputs": "Diff Inputs",
+    "diff.preview": "Preview",
+
+    "diff.openA": "Open A",
+    "diff.openB": "Open B",
+    "diff.pasteA": "Paste A",
+    "diff.pasteB": "Paste B",
+    "diff.swap": "Swap",
+    "diff.prev": "Prev",
+    "diff.next": "Next",
+    "diff.reset": "Reset",
+
+    "diff.placeholderA": "Paste or drop LEFT (A) here…",
+    "diff.placeholderB": "Paste or drop RIGHT (B) here…",
+
+    "diff.wrap": "Wrap",
+    "diff.lineNumbers": "Line numbers",
+    "diff.ignoreWhitespace": "Ignore whitespace",
+    "diff.ignoreCase": "Ignore case",
+    "diff.normalizeEOL": "Normalize EOL",
+    "diff.ignoreTrailing": "Ignore trailing",
+    "diff.highContrast": "High contrast",
+    "diff.watermark": "Watermark",
+
+    "PNG": "PNG",
+    "PDF": "PDF",
+    "Print": "Print"
+}

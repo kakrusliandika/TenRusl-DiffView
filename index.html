@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>TenRusl DiffView — Side-by-side diff, PNG/PDF, Offline</title>
+        <meta
+            name="description"
+            content="Compare two texts/code side-by-side with additions/removals/changes. Ignore whitespace/case, export PNG/PDF. Fast, offline, private."
+        />
+
+        <!-- Indexing directives -->
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+
+        <!-- Brand & PWA -->
+        <meta name="theme-color" content="#8b5cf6" />
+        <meta name="application-name" content="TenRusl Web DiffView" />
+        <meta name="author" content="Andika Rusli - TenRusl" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta name="trhc-country" content="ID" />
+
+        <!-- Canonical & Hreflang -->
+        <link rel="canonical" href="https://tenrusl-diffview.pages.dev/" />
+        <link rel="alternate" href="https://tenrusl-diffview.pages.dev/" hreflang="en" />
+        <link rel="alternate" href="https://tenrusl-diffview.pages.dev/id/" hreflang="id-ID" />
+        <link rel="alternate" href="https://tenrusl-diffview.pages.dev/" hreflang="x-default" />
+
+        <!-- Icons & Manifest -->
+        <link rel="icon" href="/assets/images/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="/assets/plugin/fontawesome/css/all.min.css" />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="/assets/css/theme.css" />
+        <link rel="stylesheet" href="/assets/css/chrome.css" />
+        <link rel="stylesheet" href="/assets/css/app.css" />
+
+        <!-- OG/Twitter -->
+        <meta property="og:site_name" content="TenRusl Web DiffView" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="TenRusl Web DiffView — Side-by-side diff" />
+        <meta
+            property="og:description"
+            content="Compare two versions side-by-side. Ignore whitespace/case, export PNG/PDF. PWA. Fast & private."
+        />
+        <meta property="og:url" content="https://tenrusl-diffview.pages.dev/" />
+        <meta property="og:image" content="https://tenrusl-diffview.pages.dev/assets/images/icon.svg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TenRusl Web DiffView preview" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="TenRusl Web DiffView — Side-by-side diff" />
+        <meta
+            name="twitter:description"
+            content="Compare texts/code. Ignore whitespace/case. Export PNG/PDF. PWA. Offline-first."
+        />
+        <meta name="twitter:image" content="https://tenrusl-diffview.pages.dev/assets/images/icon.svg" />
+
+        <meta name="format-detection" content="telephone=no" />
+    </head>
+
+    <body>
+        <header class="app-header">
+            <div class="brand">
+                <img src="/assets/images/icon.svg" width="28" height="28" alt="TRDV" />
+                <strong>
+                    <span class="brand-full">TenRusl DiffView</span>
+                    <span class="brand-abbr">TRDV</span>
+                </strong>
+                <span class="badge">PWA</span>
+            </div>
+
+            <nav class="controls" aria-label="Toolbar">
+                <button
+                    id="btnUiLang"
+                    class="icon-btn"
+                    type="button"
+                    title="Toggle UI Language"
+                    aria-label="Toggle UI Language"
+                >
+                    <i class="fa-solid fa-globe icon" aria-hidden="true"></i>
+                    <span id="uiLangBadge" class="badge-mini">EN</span>
+                </button>
+                <button
+                    id="btnTheme"
+                    class="icon-btn"
+                    type="button"
+                    title="Toggle Theme"
+                    aria-label="Toggle Theme"
+                    style="position: relative"
+                >
+                    <i class="fa-solid fa-sun icon icon-sun" aria-hidden="true"></i>
+                    <i class="fa-solid fa-moon icon icon-moon" aria-hidden="true"></i>
+                </button>
+            </nav>
+        </header>
+
+        <main class="app-main">
+            <!-- Inputs & Diff Toolbar -->
+            <section class="panel left" aria-label="Inputs & Diff Toolbar">
+                <div class="panel-head">
+                    <h2 data-i18n="diff.inputs">Diff Inputs</h2>
+                    <div id="diffToolbar">
+                        <div class="row">
+                            <div>
+                                <button id="btnOpenA" class="btn ghost" type="button" aria-label="Open A">
+                                    <i class="fa-solid fa-folder-open icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="diff.openA">Open A</span>
+                                </button>
+                                <button id="btnOpenB" class="btn ghost" type="button" aria-label="Open B">
+                                    <i class="fa-solid fa-folder-open icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="diff.openB">Open B</span>
+                                </button>
+                                <button id="btnPasteA" class="btn" type="button" aria-label="Paste A">
+                                    <i class="fa-solid fa-clipboard icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="diff.pasteA">Paste A</span>
+                                </button>
+                                <button id="btnPasteB" class="btn" type="button" aria-label="Paste B">
+                                    <i class="fa-solid fa-clipboard icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="diff.pasteB">Paste B</span>
+                                </button>
+                            </div>
+                            <div>
+                                <button id="btnSwap" class="btn ghost" type="button" aria-label="Swap">
+                                    <i class="fa-solid fa-right-left icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="diff.swap">Swap</span>
+                                </button>
+
+                                <span class="sep" aria-hidden="true"></span>
+
+                                <button id="btnPrev" class="btn ghost" type="button" aria-label="Prev hunk">
+                                    <i class="fa-solid fa-arrow-up icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="diff.prev">Prev</span>
+                                </button>
+                                <button id="btnNext" class="btn ghost" type="button" aria-label="Next hunk">
+                                    <i class="fa-solid fa-arrow-down icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="diff.next">Next</span>
+                                </button>
+
+                                <span class="sep" aria-hidden="true"></span>
+
+                                <button id="btnReset" class="btn ghost" type="button" aria-label="Reset">
+                                    <i class="fa-solid fa-rotate-left icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="diff.reset">Reset</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-grid">
+                    <div id="dropA" class="dropzone" tabindex="0" aria-label="Drop file for A">
+                        <textarea
+                            id="inputA"
+                            spellcheck="false"
+                            placeholder="A…"
+                            aria-label="Left input (A)"
+                        ></textarea>
+                        <div class="drop-hint" data-i18n="diff.placeholderA">Paste or drop LEFT (A)…</div>
+                    </div>
+                    <div id="dropB" class="dropzone" tabindex="0" aria-label="Drop file for B">
+                        <textarea
+                            id="inputB"
+                            spellcheck="false"
+                            placeholder="B…"
+                            aria-label="Right input (B)"
+                        ></textarea>
+                        <div class="drop-hint" data-i18n="diff.placeholderB">Paste or drop RIGHT (B)…</div>
+                    </div>
+                </div>
+
+                <div class="options">
+                    <label class="opt"
+                        ><input id="optWrap" type="checkbox" /> <span data-i18n="diff.wrap">Wrap</span></label
+                    >
+                    <label class="opt"
+                        ><input id="optLineNum" type="checkbox" checked /><span data-i18n="diff.lineNumbers"
+                            >Line numbers</span
+                        ></label
+                    >
+                    <label class="opt"
+                        ><input id="optIgnoreWS" type="checkbox" /><span data-i18n="diff.ignoreWhitespace"
+                            >Ignore whitespace</span
+                        ></label
+                    >
+                    <label class="opt"
+                        ><input id="optIgnoreCase" type="checkbox" /><span data-i18n="diff.ignoreCase"
+                            >Ignore case</span
+                        ></label
+                    >
+                    <label class="opt"
+                        ><input id="optNormalizeEOL" type="checkbox" checked /><span data-i18n="diff.normalizeEOL"
+                            >Normalize line endings</span
+                        ></label
+                    >
+                    <label class="opt"
+                        ><input id="optIgnoreTrail" type="checkbox" /><span data-i18n="diff.ignoreTrailing"
+                            >Ignore trailing spaces</span
+                        ></label
+                    >
+                    <label class="opt"
+                        ><input id="optHighContrast" type="checkbox" /><span data-i18n="diff.highContrast"
+                            >High contrast</span
+                        ></label
+                    >
+                    <label class="opt"
+                        ><input id="optWatermark" type="checkbox" /><span data-i18n="diff.watermark"
+                            >Watermark</span
+                        ></label
+                    >
+
+                    <div class="flex-spacer"></div>
+
+                    <!-- NEW: view toggle + copy/share -->
+                    <button id="btnMode" class="btn ghost" type="button" aria-label="Toggle view">
+                        <i class="fa-solid fa-columns icon" aria-hidden="true"></i>
+                        <span class="label">Unified</span>
+                    </button>
+                    <button id="btnCopyDiff" class="btn ghost" type="button" aria-label="Copy diff">
+                        <i class="fa-regular fa-copy icon" aria-hidden="true"></i><span class="label">Copy diff</span>
+                    </button>
+                    <button id="btnShare" class="btn ghost" type="button" aria-label="Share snapshot">
+                        <i class="fa-solid fa-share-nodes icon" aria-hidden="true"></i><span class="label">Share</span>
+                    </button>
+
+                    <button id="btnPNG" class="btn" type="button" aria-label="Save PNG">
+                        <i class="fa-regular fa-image icon" aria-hidden="true"></i><span class="label">PNG</span>
+                    </button>
+                    <button id="btnPDF" class="btn" type="button" aria-label="Save PDF">
+                        <i class="fa-regular fa-file-pdf icon" aria-hidden="true"></i><span class="label">PDF</span>
+                    </button>
+                    <button id="btnPrint" class="btn ghost" type="button" aria-label="Print">
+                        <i class="fa-solid fa-print icon" aria-hidden="true"></i><span class="label">Print</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Preview -->
+            <section class="panel right" aria-label="Diff Preview">
+                <div class="panel-head">
+                    <h2 data-i18n="diff.preview">
+                        <span id="hunkCounter" class="badge-mini" style="margin-left: 8px">0/0</span>
+                    </h2>
+                </div>
+
+                <div id="diffWrap" class="diff-wrap"><!-- grid injected by diff.js --></div>
+            </section>
+        </main>
+
+        <!-- (Optional) AdSense -->
+        <div style="padding: 20px">
+            <ins
+                class="adsbygoogle"
+                style="display: block"
+                data-ad-client="ca-pub-3735882384148563"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+            ></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- Footer injected by footer.js -->
+        <script defer src="/assets/js/theme.js"></script>
+        <script defer src="/assets/js/language.js"></script>
+        <script defer src="/assets/js/header.js"></script>
+
+        <!-- Vendors (Diff & Export) -->
+        <script defer src="/assets/plugin/diff-match-patch.js"></script>
+        <script defer src="/assets/plugin/htmlotimage.js"></script>
+        <script defer src="/assets/plugin/jspdf.js"></script>
+
+        <!-- App -->
+        <script defer src="/assets/js/diff.js"></script>
+        <script defer src="/assets/js/footer.js"></script>
+
+        <!-- SW register (PWA tweak) -->
+        <script>
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/sw.js").catch(() => {});
+            }
+        </script>
+    </body>
+</html>

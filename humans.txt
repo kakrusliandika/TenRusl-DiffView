@@ -1,0 +1,11 @@
+TEAM
+  Developer: TenRusl DiffView (TRDV)
+  Site: https://tenrusl-diffview.pages.dev
+  GitHub: https://github.com/kakrusliandika/TenRusl-DiffView
+
+THANKS
+  diff-match-patch, html-to-image, jsPDF
+
+SITE
+  Languages: English, Indonesian
+  Standards: HTML5, CSS3, JavaScript

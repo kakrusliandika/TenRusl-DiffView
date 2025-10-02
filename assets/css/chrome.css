@@ -1,0 +1,329 @@
+/* =====================================================================
+   TRHC — chrome.css
+   Shared header+footer styles for BOTH:
+   - App (index)  : .app-header  / .app-footer  + .controls
+   - Pages        : .site-header / .site-footer + .nav
+   Relies on tokens from theme.css: --panel --surface --text --muted --border --shadow
+   ===================================================================== */
+
+/* ========== HEADER (shared) ========== */
+:is(.app-header, .site-header) {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    backdrop-filter: saturate(140%) blur(8px);
+}
+
+:is(.app-header, .site-header) a {
+    text-decoration: none;
+}
+
+/* brand */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+}
+.brand strong {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+.brand .badge {
+    background: var(--surface);
+    color: var(--muted);
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 11px;
+    border: 1px solid var(--border);
+}
+.brand-full {
+    display: inline;
+}
+.brand-abbr {
+    display: none;
+}
+
+/* right bar: controls (app) or nav (pages) */
+:is(.controls, .nav) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+}
+:is(.controls, .nav)::-webkit-scrollbar {
+    height: 8px;
+}
+:is(.controls, .nav)::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.35);
+    border-radius: 999px;
+}
+
+/* links inside pages .nav */
+.nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+.nav a:hover,
+.nav a.active {
+    color: var(--text);
+    background: var(--surface);
+}
+
+/* generic icon button */
+.icon-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    min-width: 36px;
+    padding: 0 10px;
+    gap: 6px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    color: var(--text);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+.icon-btn:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+}
+.icon-btn:active {
+    transform: scale(0.98);
+}
+.icon-btn.ghost {
+    background: transparent;
+}
+.icon-btn.sm {
+    height: 30px;
+    min-width: 30px;
+    border-radius: 10px;
+}
+
+/* FA icon sizing helper (optional) */
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Sun/Moon animation helpers (optional if JS swaps FA icons) */
+.icon-sun {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.icon-moon {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.85) rotate(-8deg);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+:root.light .icon-sun {
+    opacity: 0;
+    transform: scale(0.85) rotate(8deg);
+}
+:root.light .icon-moon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+/* mini badge (for language badge) */
+.badge-mini {
+    font-size: 10px;
+    line-height: 1;
+    padding: 3px 6px;
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+}
+
+/* mobile: bigger touch targets + brand abbreviation */
+@media (max-width: 980px) {
+    .icon-btn {
+        height: 44px;
+        min-width: 44px;
+        border-radius: 14px;
+    }
+    .icon {
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+    }
+    .brand-full {
+        display: none;
+    }
+    .brand-abbr {
+        display: inline;
+    }
+}
+
+/* pages mobile nav popover (header-pages) */
+@media (max-width: 860px) {
+    .nav-toggle {
+        display: inline-grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+    }
+    .nav {
+        position: absolute;
+        right: 12px;
+        top: 60px;
+        display: none;
+        flex-direction: column;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 8px;
+        box-shadow: var(--shadow);
+        max-width: calc(100vw - 24px);
+    }
+    .nav.open {
+        display: flex;
+    }
+    .nav a {
+        width: 100%;
+    }
+}
+
+/* ========== FOOTER (shared) ========== */
+:is(.app-footer, .site-footer) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--muted);
+}
+:is(.app-footer, .site-footer) a {
+    color: inherit;
+    text-decoration: none;
+    text-underline-offset: 2px;
+}
+:is(.app-footer, .site-footer) .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+}
+:is(.app-footer, .site-footer) .dot {
+    opacity: 0.6;
+    margin: 0 0.4rem;
+}
+:is(.app-footer, .site-footer) .sep {
+    opacity: 0.5;
+    margin: 0 0.3rem;
+}
+
+/* app-specific small status text */
+#status {
+    font-size: 12px;
+    color: var(--muted);
+}
+.muted {
+    color: var(--muted);
+}
+
+/* footer mobile wrap */
+@media (max-width: 680px) {
+    :is(.app-footer, .site-footer) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+    :is(.app-footer, .site-footer) .right {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+}
+
+/* ========== PRINT: hide chrome on print ========== */
+@media print {
+    header,
+    footer,
+    .panel.left .panel-head,
+    .panel.right .panel-head {
+        display: none !important;
+    }
+}
+
+/* Skip link: hidden kecuali fokus */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 8px;
+    background: var(--panel);
+    color: var(--text);
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    z-index: 80;
+}
+.skip-link:focus {
+    left: 8px;
+}
+
+/* Active state utk menu di .controls */
+.controls .icon-btn.active {
+    border-color: var(--brand, #8b5cf6);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2) inset;
+}
+
+/* =========================
+   PAGES-ONLY (mobile) override
+   - Icon-only pada header pages
+   - Ikon sedikit lebih kecil
+   - Tidak mempengaruhi app
+   ========================= */
+@media (max-width: 980px) {
+    .app-header[data-scope="pages"] .controls .label {
+        display: none;
+    }
+    .app-header[data-scope="pages"] .controls .icon {
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+    }
+    .app-header[data-scope="pages"] .controls .icon-btn {
+        height: 38px;
+        min-width: 38px;
+        padding: 0 8px;
+        border-radius: 12px;
+    }
+}
