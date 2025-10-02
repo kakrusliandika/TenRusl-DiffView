@@ -406,9 +406,9 @@ By participating, you agree to abide by our **Contributor Covenant**. See **CODE
 
 ## 👤 Author
 
-**Andika Rusli (TenRusl)**
-**Site**: https://tenrusl-diffview.pages.dev  
-**GitHub**: https://github.com/kakrusliandika/TenRusl-DiffView
+-   **Andika Rusli (TenRusl)**
+-   **Site**: https://tenrusl-diffview.pages.dev
+-   **GitHub**: https://github.com/kakrusliandika/TenRusl-DiffView
 
 ---
 
