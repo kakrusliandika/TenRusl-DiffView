@@ -16,27 +16,27 @@ Live: **https://tenrusl-diffview.pages.dev/**
 
 ## Table of Contents
 
--   [✨ Key Features](#-key-features)
--   [🚀 Quick Demo](#-quick-demo)
--   [📦 Install](#-install)
--   [📦 Deployment](#-install)
--   [🗂️ Directory Structure](#️-directory-structure)
--   [🧠 How It Works](#-how-it-works)
--   [🔗 Share Snapshot](#-share-snapshot)
--   [⌨️ Keyboard Shortcuts](#️-keyboard-shortcuts)
--   [🧩 Options & Preferences](#-options--preferences)
--   [🧾 Export & Print](#-export--print)
--   [📦 PWA & Caching](#-pwa--caching)
--   [🌍 I18N](#-i18n)
--   [🛡️ Security Headers (Recommended)](#️-security-headers-recommended)
--   [🛠️ Development](#️-development)
--   [🧪 Troubleshooting](#-troubleshooting)
--   [🤝 Contributing](#-contributing)
--   [📜 Code of Conduct](#-code-of-conduct)
--   [📚 Credits](#-credits)
--   [👥 Team](#-team)
--   [🗺️ Roadmap](#️-roadmap)
--   [📄 License](#-license)
+-   [✨ Key Features](#key-features)
+-   [▶️ Quick Demo](#quick-demo)
+-   [📦 Install (Open Source)](#install-open-source)
+-   [🚀 Deployment](#deployment)
+-   [🗂️ Directory Structure](#directory-structure)
+-   [⚙️ How It Works](#how-it-works)
+-   [🔗 Share Snapshot](#share-snapshot)
+-   [⌨️ Keyboard Shortcuts](#keyboard-shortcuts)
+-   [🎛️ Options & Preferences](#options--preferences)
+-   [🖨️ Export & Print](#export--print)
+-   [📲 PWA & Caching](#pwa--caching)
+-   [🌍 I18N](#i18n)
+-   [🛡️ Security Headers (Recommended)](#security-headers-recommended)
+-   [🛠️ Development](#development)
+-   [🐞 Troubleshooting](#troubleshooting)
+-   [🤝 Contributing](#contributing)
+-   [📜 Code of Conduct](#code-of-conduct)
+-   [🏆 Credits](#credits)
+-   [👤 Author](#author)
+-   [🗺️ Roadmap](#roadmap)
+-   [📄 License](#license)
 
 ---
 
@@ -65,7 +65,7 @@ Live: **https://tenrusl-diffview.pages.dev/**
 
 ---
 
-## 🚀 Quick Demo
+## ▶️ Quick Demo
 
 1. Paste or drop file(s) into inputs **A** and **B** (left panel).
 2. Toggle options (wrap, line numbers, ignore rules, high contrast, watermark).
@@ -138,18 +138,26 @@ No build step required. Just keep `sw.js` at site root scope (or allow with `Ser
 
 ---
 
-## 📦 Deployment
+## 🚀 Deployment
 
 ### Cloudflare Pages (recommended)
 
--   **Build command**: _(leave empty)_
--   **Output dir**: `/` (root)
--   Ensure `/assets/js/sw.js` is registered at boot and headers set `Service-Worker-Allowed: /`.
+-   **Build command**: _(empty)_
+-   **Output directory**: `/` (root)
+-   Ensure the Service Worker is registered as **`/sw.js`** with scope `/`.
+    -   If your source file is at `/assets/js/sw.js`, either copy it to root during deploy or map a route so `/sw.js` resolves to that file.
+-   `_headers` and `_redirects` are honored on Cloudflare Pages.
 
-### Netlify / Vercel / Static hosts
+### Netlify / Vercel / Any static host
 
--   Deploy as static files (no server required).
--   Apply headers from `_headers` (CSP, caching, SW scope).
+-   Upload the repo as‑is.
+-   Apply **security headers** (see section below).
+-   Keep `/_redirects` for SPA routing (`/*  /index.html  200`).
+
+### Apache / Nginx
+
+-   Mirror the headers via `.htaccess` (Apache) or server config (Nginx).
+-   Ensure Service Worker scope covers `/` and that `/sw.js` resolves.
 
 ---
 
@@ -232,7 +240,7 @@ No build step required. Just keep `sw.js` at site root scope (or allow with `Ser
 
 ---
 
-## 🧠 How It Works
+## ⚙️ How It Works
 
 -   **Diff engine**: [google/diff-match-patch] is used when available; we set small timeouts and apply **semantic cleanup**.
 -   **Normalization**: before diffing, inputs can be normalized based on preferences:
@@ -283,7 +291,7 @@ Click **Share** to copy a link that reconstructs the current state (inputs + pre
 
 ---
 
-## 🧩 Options & Preferences
+## 🎛️ Options & Preferences
 
 -   **Wrap** long lines
 -   **Line numbers**
@@ -295,7 +303,7 @@ All preferences are persisted to **`localStorage`** (`trdv.diff.prefs`).
 
 ---
 
-## 🧾 Export & Print
+## 🖨️ Export & Print
 
 -   **PNG** — Capture the preview grid with `html-to-image` at higher pixel ratio.
 -   **PDF** — Render to PNG then fit into **A4** (`jsPDF`), centered with margins.
@@ -305,7 +313,7 @@ All preferences are persisted to **`localStorage`** (`trdv.diff.prefs`).
 
 ---
 
-## 📦 PWA & Caching
+## 📲 PWA & Caching
 
 `assets/js/sw.js` provides three buckets:
 
@@ -358,7 +366,7 @@ Adjust CSP if you change vendor locations.
 
 ---
 
-## 🧪 Troubleshooting
+## 🐞 Troubleshooting
 
 -   **Service Worker inactive** → ensure you’re on `http://localhost` or `https://` (not `file://`).
 -   **Very large inputs** → browser DOM capture for PNG/PDF can be memory heavy; export in parts if needed.
@@ -389,7 +397,7 @@ By participating, you agree to abide by our **Contributor Covenant**. See **CODE
 
 ---
 
-## 📚 Credits
+## 🏆 Credits
 
 -   **diff‑match‑patch**
 -   **html‑to‑image**
@@ -397,9 +405,9 @@ By participating, you agree to abide by our **Contributor Covenant**. See **CODE
 
 ---
 
-## 👥 Author
+## 👤 Author
 
-**Developer**: TenRusli (TRDV)  
+**Andika Rusli (TenRusl)**
 **Site**: https://tenrusl-diffview.pages.dev  
 **GitHub**: https://github.com/kakrusliandika/TenRusl-DiffView
 
@@ -407,7 +415,8 @@ By participating, you agree to abide by our **Contributor Covenant**. See **CODE
 
 ## 🗺️ Roadmap
 
--   [ ] Batch export (multi‑hunk → single PDF)
+-   [ ] **Share Snapshot** (permalink with serialized state)
+-   [ ] **Batch Export** (multi‑hunk → single PDF)
 -   [ ] More sharing formats (Gist/GitHub permalinks)
 -   [ ] Theming system for diff colors
 -   [ ] Per‑file tab support (multi‑pane)

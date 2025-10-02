@@ -1,5 +1,5 @@
 TEAM
-  Developer: TenRusl DiffView (TRDV)
+  Developer: TenRusl
   Site: https://tenrusl-diffview.pages.dev
   GitHub: https://github.com/kakrusliandika/TenRusl-DiffView
 
