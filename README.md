@@ -2,7 +2,6 @@
 
 > Private, fast, and offline‑first **PWA** to compare two texts/code with **side‑by‑side** and **unified** views, **inline word/character highlights**, smart ignore options, **export PNG/PDF**, **print**, **Copy diff**, and **Share snapshot** (URL with serialized state).
 
-[![PWA](https://img.shields.io/badge/PWA-Ready-8b5cf6)](#-pwa--caching)
 ![Status](https://img.shields.io/badge/PWA-Ready-8b5cf6)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Stack](https://img.shields.io/badge/Stack-Vanilla%20JS%20%7C%20diff--match--patch%20%7C%20PWA-111)
