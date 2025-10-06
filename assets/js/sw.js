@@ -29,7 +29,7 @@ const PRECACHE = [
     "/assets/js/language.js",
     "/assets/js/header.js",
     "/assets/js/footer.js",
-    "/assets/js/diff.js",
+    "/assets/js/app.js",
 
     // i18n (biar UI cepat tampil saat offline)
     "/assets/i18n/en.json",

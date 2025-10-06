@@ -1,5 +1,5 @@
 /* =========================================================
-   TRDV — DiffView (assets/js/diff.js)
+   TRDV — DiffView (assets/js/app.js)
    Side-by-side + Unified view, inline highlights, Copy/Share,
    PNG/PDF export, print (mirror), snapshot (Base64 URL-safe),
    PWA-friendly. (Hanya penambahan fitur, tidak mengurangi yang ada)

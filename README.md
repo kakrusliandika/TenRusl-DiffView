@@ -188,6 +188,8 @@ No build step required. Just keep `sw.js` at site root scope (or allow with `Ser
 │  ├─ css/
 │  │  ├─ app.css
 │  │  ├─ chrome.css
+│  │  ├─ header.css
+│  │  ├─ footer.css
 │  │  ├─ language.css
 │  │  ├─ pages.css
 │  │  ├─ theme.css
@@ -201,7 +203,7 @@ No build step required. Just keep `sw.js` at site root scope (or allow with `Ser
 │  │  ├─ icon.svg
 │  │  └─ index.html
 │  ├─ js/
-│  │  ├─ diff.js
+│  │  ├─ app.js
 │  │  ├─ footer-pages.js
 │  │  ├─ footer.js
 │  │  ├─ header-pages.js
@@ -358,7 +360,7 @@ Adjust CSP if you change vendor locations.
 ## 🛠️ Development
 
 -   Entry: `index.html`
--   Core logic: `assets/js/diff.js`
+-   Core logic: `assets/js/app.js`
 -   PWA: `assets/js/sw.js`
 -   Theme & chrome: `assets/css/*`
 -   i18n: `assets/i18n/*.json`

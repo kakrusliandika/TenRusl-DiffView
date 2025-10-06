@@ -1,4 +1,10 @@
-/* === base layout (dipertahankan dari app.css kamu) === */
+/* C:\laragon\www\TenRusl-DiffView\assets\css\app.css */
+/* =========================================================
+   APP LAYOUT & DIFF VIEW (kept from your original app.css)
+   File: app.css
+   ========================================================= */
+
+/* === base layout === */
 .popover {
     position: absolute;
     right: 16px;
@@ -187,7 +193,7 @@
     flex-wrap: wrap;
     gap: 10px 14px;
     align-items: center;
-    justify-content: center; /* <<< center opsi & tombol export */
+    justify-content: center; /* center opsi & tombol export */
     padding: 10px 14px;
     border-top: 1px solid var(--border);
 }
@@ -322,35 +328,32 @@
     }
 }
 
-/* ==== Diff Inputs: lebih lega & toolbar ditaruh di bawah judul ==== */
+/* ==== Diff Inputs: lebih lega & toolbar di bawah judul ==== */
 .panel.left .panel-head {
-    /* ubah dari row -> column agar judul di atas, toolbar di bawah */
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
-
-    /* tambah ruang vertikal supaya tidak mepet */
     padding: 16px 14px;
 }
 .panel.left .panel-head h2 {
-    margin: 0; /* pastikan judul tidak nambah jarak aneh */
+    margin: 0;
 }
 
-/* toolbar melebar penuh & tetap dua baris persis seperti urutan di DOM */
+/* toolbar melebar penuh & tetap dua baris sesuai DOM */
 #diffToolbar {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 8px; /* jarak antar baris */
+    gap: 8px;
 }
 #diffToolbar .row {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    justify-content: flex-start; /* deret kiri, rapi */
+    justify-content: flex-start;
 }
 
-/* opsional: pada layar kecil, biar tetap nyaman */
+/* opsional: layar kecil */
 @media (max-width: 520px) {
     #diffToolbar .row {
         gap: 6px;
