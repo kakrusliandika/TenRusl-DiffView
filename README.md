@@ -9,7 +9,7 @@
 ![Stars](https://img.shields.io/github/stars/kakrusliandika/TenRusl-DiffView?style=social)
 ![Forks](https://img.shields.io/github/forks/kakrusliandika/TenRusl-DiffView?style=social)
 
-Live: **https://tenrusl-diffview.pages.dev/**
+Live: **[https://tenrusl-diffview.pages.dev/](https://tenrusl-diffview.pages.dev/)**
 
 ---
 
