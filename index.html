@@ -1,71 +1,151 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js" dir="ltr">
     <head>
+        <!-- Charset & Viewport -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <!-- Title & Description -->
         <title>TenRusl DiffView — Side-by-side diff, PNG/PDF, Offline</title>
         <meta
             name="description"
-            content="Compare two texts/code side-by-side with additions/removals/changes. Ignore whitespace/case, export PNG/PDF. Fast, offline, private."
+            content="Compare two texts/code side-by-side and unified, with additions/removals/changes. Ignore whitespace/case, export PNG/PDF. Fast, offline-first, private."
         />
 
         <!-- Indexing directives -->
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="googlebot" content="index, follow" />
+        <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+        <meta name="googlebot" content="index,follow" />
 
         <!-- Brand & PWA -->
         <meta name="theme-color" content="#8b5cf6" />
-        <meta name="application-name" content="TenRusl Web DiffView" />
+        <meta name="application-name" content="TenRusl DiffView" />
         <meta name="author" content="Andika Rusli - TenRusl" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="trhc-country" content="ID" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- iOS PWA polish -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="msapplication-TileColor" content="#8b5cf6" />
 
-        <!-- Canonical & Hreflang -->
+        <!-- Canonical & Hreflang (root = EN) -->
         <link rel="canonical" href="https://tenrusl-diffview.pages.dev/" />
+        <link rel="alternate" href="https://tenrusl-diffview.pages.dev/" hreflang="x-default" />
         <link rel="alternate" href="https://tenrusl-diffview.pages.dev/" hreflang="en" />
         <link rel="alternate" href="https://tenrusl-diffview.pages.dev/id/" hreflang="id-ID" />
-        <link rel="alternate" href="https://tenrusl-diffview.pages.dev/" hreflang="x-default" />
 
         <!-- Icons & Manifest -->
         <link rel="icon" href="/assets/images/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/assets/images/icon.svg" />
         <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="/assets/plugin/fontawesome/css/all.min.css" />
+        <!-- Performance: preconnect & preload (adjust as needed) -->
+        <!-- <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin /> -->
+        <link
+            rel="preload"
+            href="/assets/css/theme.css"
+            as="style"
+            fetchpriority="high"
+            onload="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript><link rel="stylesheet" href="/assets/css/theme.css" /></noscript>
 
         <!-- Styles -->
-        <link rel="stylesheet" href="assets/css/theme.css" />
-        <link rel="stylesheet" href="assets/css/app.css" />
-        <link rel="stylesheet" href="assets/css/chrome.css" />
-        <link rel="stylesheet" href="assets/css/header.css" />
-        <link rel="stylesheet" href="assets/css/footer.css" />
+        <link rel="stylesheet" href="/assets/css/app.css" />
+        <link rel="stylesheet" href="/assets/css/chrome.css" />
+        <link rel="stylesheet" href="/assets/css/header.css" />
+        <link rel="stylesheet" href="/assets/css/footer.css" />
 
-        <!-- OG/Twitter -->
-        <meta property="og:site_name" content="TenRusl Web DiffView" />
+        <!-- Font Awesome (self/hosted) -->
+        <link rel="stylesheet" href="/assets/plugin/fontawesome/css/all.min.css" />
+
+        <!-- Open Graph -->
+        <meta property="og:site_name" content="TenRusl DiffView" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="TenRusl Web DiffView — Side-by-side diff" />
+        <meta property="og:title" content="TenRusl DiffView — Side-by-side diff" />
         <meta
             property="og:description"
-            content="Compare two versions side-by-side. Ignore whitespace/case, export PNG/PDF. PWA. Fast & private."
+            content="Compare versions side-by-side or unified. Ignore whitespace/case. Export PNG/PDF. PWA. Fast & private."
         />
         <meta property="og:url" content="https://tenrusl-diffview.pages.dev/" />
-        <meta property="og:image" content="https://tenrusl-diffview.pages.dev/assets/images/icon.svg" />
+        <!-- Use a raster social image (PNG/JPG 1200x630), not SVG -->
+        <meta property="og:image" content="/assets/images/icon.svg" />
+        <meta property="og:image:secure_url" content="/assets/images/icon.svg" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="TenRusl DiffView preview" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="id_ID" />
+        <meta property="og:updated_time" content="2025-10-19T00:00:00+07:00" />
+
+        <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="TenRusl DiffView — Side-by-side diff" />
         <meta
             name="twitter:description"
-            content="Compare texts/code. Ignore whitespace/case. Export PNG/PDF. PWA. Offline-first."
+            content="Compare texts/code with side-by-side & unified views. Ignore whitespace/case. Export PNG/PDF. Offline-first."
         />
-        <meta name="twitter:image" content="https://tenrusl-diffview.pages.dev/assets/images/icon.svg" />
+        <meta name="twitter:image" content="/assets/images/icon.svg" />
 
-        <meta name="format-detection" content="telephone=no" />
+        <!-- Structured Data -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "TenRusl DiffView",
+                "url": "https://tenrusl-diffview.pages.dev/",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "inLanguage": "en",
+                "description": "Side-by-side & unified diff viewer with inline highlights, ignore whitespace/case, export PNG/PDF. Offline-first PWA.",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "creator": {
+                    "@type": "Organization",
+                    "name": "TenRusl",
+                    "url": "https://tenrusl-diffview.pages.dev/",
+                    "logo": "/assets/images/icon.svg"
+                },
+                "featureList": [
+                    "Side-by-side & unified views",
+                    "Inline word/character highlights",
+                    "Ignore whitespace and case",
+                    "Export to PNG/PDF & Print",
+                    "Copy diff & Share snapshot",
+                    "Offline-first PWA, no telemetry"
+                ],
+                "softwareVersion": "1.0.0",
+                "datePublished": "2025-10-01",
+                "dateModified": "2025-10-19",
+                "screenshot": "/assets/images/icon.svg"
+            }
+        </script>
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "TenRusl",
+                "url": "https://tenrusl-diffview.pages.dev/",
+                "logo": "/assets/images/icon.svg",
+                "sameAs": ["https://github.com/kakrusliandika", "https://x.com/kakrusliandika"]
+            }
+        </script>
+
+        <!-- Optional: GA (uncomment & replace with your ID) -->
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-XXXXXXXXXX");
+        </script>
+
+        <!-- Discovery hints -->
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     </head>
 
     <body>
